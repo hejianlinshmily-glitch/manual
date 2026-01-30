@@ -3,489 +3,633 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智联芯物联网平台操作手册 - 客服专用版</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>XY101 无线长待机定位终端 - 产品规格书</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
-        
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #f0f7ff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --bg-color: #f5f5f7;
+            --card-bg: #ffffff;
+        }
+
         body {
-            font-family: 'Inter', 'Noto Sans SC', sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Helvetica Neue', Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.5;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8; 
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            overflow: hidden;
         }
 
-        .nav-item.active {
-            background-color: #eff6ff;
-            color: #2563eb;
-            border-right: 3px solid #2563eb;
+        /* Header Layout (Screen View) */
+        header {
+            background: linear-gradient(135deg, #0066cc, #004c99);
+            color: white;
+            padding: 30px 40px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* Ensure background prints */
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
         }
 
-        .content-card {
-            transition: all 0.3s ease;
+        .header-content {
+            flex: 1;
         }
-        /* hover effect removed for mobile touch improvement, kept structure */
-        
-        .feature-icon {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-        }
-        
-        .screenshot-placeholder {
-            background-color: #f8fafc;
-            border: 2px dashed #e2e8f0;
-            border-radius: 0.5rem;
+
+        .logo-container {
+            background-color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            margin-right: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #94a3b8;
-            font-size: 0.9rem;
-            padding: 2rem;
-            margin: 1rem 0;
-            position: relative;
-            overflow: hidden;
-            min-height: 120px;
+            min-width: 80px;
         }
 
-        .screenshot-placeholder::after {
-            content: '界面示意图';
-            position: absolute;
-            bottom: 10px;
-            right: 15px;
-            font-size: 0.75rem;
-            color: #cbd5e1;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        /* Content Sections */
+        .section {
+            padding: 25px 40px;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .highlight {
-            background-color: #fef08a; /* Yellow-200 */
-            padding: 0 2px;
-            border-radius: 2px;
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--primary-color);
+            padding-left: 12px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        /* Highlight Grid */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .highlight-box {
+            background-color: var(--secondary-color);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #dbeafe;
+            margin-top: 15px;
+        }
+
+        .highlight-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            font-size: 14px;
+        }
+
+        .highlight-item::before {
+            content: "✔";
+            color: var(--primary-color);
+            margin-right: 8px;
             font-weight: bold;
+            line-height: 1.5;
+        }
+
+        /* Images */
+        .product-images {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .img-placeholder {
+            width: 140px;
+            height: 200px;
+            background-color: #f8f9fa;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 12px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        th, td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: #444;
+            font-weight: 600;
+            width: 30%;
+        }
+        
+        tr:nth-child(even) td {
+            background-color: #fafbfc;
+        }
+
+        .spec-block {
+            margin-bottom: 20px;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        .spec-group-title {
+            background-color: #e6f0fa;
+            color: var(--primary-color);
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .function-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 15px;
+        }
+
+        .func-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            break-inside: avoid;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- New Icon Styles --- */
+        .func-icon {
+            /* 屏幕显示尺寸 */
+            width: 36px;
+            height: 36px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color); /* Use theme color */
+        }
+        
+        .func-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke-width: 1.5; /* Slightly elegant stroke */
+        }
+
+        .func-name {
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            color: #999;
+            background-color: #f8f9fa;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* --- PRINT SPECIFIC STYLES (A4 Optimization) --- */
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            body {
+                background-color: white;
+                margin: 0;
+                padding: 0;
+                width: 210mm; /* A4 Width */
+                min-height: 297mm;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .container {
+                box-shadow: none;
+                border: none;
+                width: 100%;
+                max-width: none;
+                border-radius: 0;
+                margin: 0;
+            }
+
+            /* --- Header: Top Banner Style --- */
+            header {
+                height: auto; 
+                width: 100%;
+                /* 紧凑内边距 */
+                padding: 20px 40px; 
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+                page-break-after: avoid; 
+                
+                /* 强制蓝色背景 */
+                background-color: #0066cc !important; 
+                background-image: linear-gradient(135deg, #0066cc, #004c99) !important;
+                color: white !important;
+                
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                margin-bottom: 0;
+            }
+
+            header .header-content {
+                display: block; 
+            }
+
+            .logo-container {
+                margin: 0; 
+                margin-left: 20px;
+                padding: 8px 20px;
+                box-shadow: none;
+                border: 1px solid rgba(255,255,255,0.2);
+            }
+            
+            header h1 {
+                font-size: 24px;
+                margin-bottom: 5px;
+                color: white !important;
+            }
+            
+            header .subtitle {
+                font-size: 14px;
+                opacity: 0.9;
+                color: white !important;
+            }
+            
+            header .company-name {
+                font-size: 12px;
+                margin-bottom: 5px;
+                opacity: 0.9;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: white !important;
+            }
+
+            /* --- Content Pages --- */
+            .section {
+                /* 紧凑的打印边距 */
+                padding: 8mm 20mm; 
+                page-break-inside: avoid;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            /* 紧凑的高亮框 */
+            .intro-grid {
+                gap: 15px; 
+            }
+            
+            .highlight-box {
+                margin-top: 10px;
+                padding: 10px;
+            }
+
+            /* 打印时缩小图片占位符，节省垂直空间 */
+            .img-placeholder {
+                height: 120px !important; 
+                width: 100px;
+            }
+
+            /* 防止元素断页 */
+            .spec-block, table, .func-card, .highlight-box {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            h2 {
+                page-break-after: avoid;
+                margin-top: 0;
+                margin-bottom: 12px;
+                font-size: 18px;
+            }
+
+            thead {
+                display: table-header-group; 
+            }
+            
+            footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                background: white;
+                border-top: 1px solid #eee;
+                padding: 10px;
+            }
+            
+            .func-card {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                padding: 10px; 
+            }
+            
+            .func-icon {
+                /* 打印尺寸 - 比以前大 */
+                width: 32px;
+                height: 32px;
+                margin-bottom: 8px;
+                /* 强制打印颜色 */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .func-icon svg {
+                stroke-width: 2; /* 打印时线条稍粗一点，防止断线 */
+            }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-700 antialiased">
+<body>
 
-    <!-- Mobile Header -->
-    <div class="lg:hidden bg-white shadow-sm fixed w-full z-50 px-4 py-3 flex items-center justify-between">
-        <div class="font-bold text-xl text-blue-600 flex items-center gap-2">
-            <i class="fa-solid fa-cloud"></i> 智联芯平台
+<div class="container">
+    <header>
+        <div class="header-content">
+            <span class="company-name">深圳市芯跃智联科技有限公司</span>
+            <h1>XY101 无线长待机定位终端</h1>
+            <div class="subtitle">4G Cat.1 / 6000mAh / 免安装强磁吸附</div>
         </div>
-        <button id="menuBtn" class="text-gray-600 hover:text-blue-600 focus:outline-none">
-            <i class="fa-solid fa-bars text-xl"></i>
-        </button>
+        <div class="logo-container">
+            <span style="color: #0066cc; font-weight: bold; font-size: 18px; letter-spacing: 1px;">芯跃智联</span>
+        </div>
+    </header>
+
+    <!-- 产品简介 -->
+    <div class="section">
+        <h2>产品简介</h2>
+        <div class="intro-grid">
+            <div>
+                <p style="margin-top:0;">XY101是一款高性能4G Cat.1无线可充电型定位终端。该机型兼顾轻巧体积与超长续航，专为资产追踪与车辆管理设计。其具备免安装、强力吸附、即放即用的特点。</p>
+                <div class="highlight-box">
+                    <div class="highlight-item"><strong>超长续航：</strong>充满电可待机长达 60 天</div>
+                    <div class="highlight-item"><strong>精准定位：</strong>北斗 + GPS + WiFi + LBS 多重定位系统</div>
+                    <div class="highlight-item"><strong>便捷安装：</strong>自带强力磁铁，无需布线，随吸随用</div>
+                </div>
+            </div>
+            <div class="product-images">
+                <div class="img-placeholder">
+                    <span>产品正面图</span>
+                </div>
+                <div class="img-placeholder">
+                    <span>产品背面图</span>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="flex min-h-screen pt-14 lg:pt-0">
-
-        <!-- Sidebar Navigation -->
-        <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 transition duration-200 ease-in-out lg:sticky lg:top-0 h-screen w-64 bg-white border-r border-gray-200 overflow-y-auto z-40 shadow-lg lg:shadow-none">
-            <div class="p-6 border-b border-gray-100 flex items-center gap-2">
-                <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center">
-                    <i class="fa-solid fa-wifi"></i>
+    <!-- 主要功能 (Updated with SVG Icons) -->
+    <div class="section">
+        <h2>主要功能</h2>
+        <div class="function-grid">
+            <div class="func-card">
+                <div class="func-icon">
+                    <!-- Protocol / File -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                 </div>
-                <h1 class="font-bold text-lg tracking-tight text-gray-900">智联芯客服手册</h1>
+                <span class="func-name">部标808协议</span>
             </div>
-            
-            <nav class="p-4 space-y-1">
-                <a href="#intro" class="nav-item flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg text-gray-600 hover:bg-gray-50 hover:text-blue-600 transition-colors">
-                    <i class="fa-solid fa-house w-5"></i> 首页
-                </a>
-                <a href="#common-solutions" class="nav-item flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg text-gray-600 hover:bg-gray-50 hover:text-blue-600 transition-colors">
-                    <i class="fa-solid fa-star w-5"></i> 常见问题 (FAQ)
-                </a>
-                <div class="pt-4 pb-2 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">功能模块</div>
-                <a href="#user-mgmt" class="nav-item flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg text-gray-600 hover:bg-gray-50 hover:text-blue-600 transition-colors">
-                    <i class="fa-solid fa-users w-5"></i> 用户与账号
-                </a>
-                <a href="#device-mgmt" class="nav-item flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg text-gray-600 hover:bg-gray-50 hover:text-blue-600 transition-colors">
-                    <i class="fa-solid fa-microchip w-5"></i> 设备管理
-                </a>
-                <a href="#monitor-center" class="nav-item flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg text-gray-600 hover:bg-gray-50 hover:text-blue-600 transition-colors">
-                    <i class="fa-solid fa-map-location-dot w-5"></i> 监控与轨迹
-                </a>
-                <a href="#order-center" class="nav-item flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg text-gray-600 hover:bg-gray-50 hover:text-blue-600 transition-colors">
-                    <i class="fa-solid fa-file-invoice-dollar w-5"></i> 订单与财务
-                </a>
-            </nav>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="flex-1 min-w-0 p-4 lg:p-8 xl:pr-12">
-            
-            <!-- Search Header -->
-            <section id="intro" class="mb-8">
-                <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl shadow-lg p-8 text-white">
-                    <h1 class="text-3xl font-bold mb-2">有什么可以帮您？</h1>
-                    <p class="text-blue-100 mb-6 text-sm">输入关键词（如：解绑、重置密码、轨迹），快速查找操作步骤。</p>
-                    
-                    <div class="relative max-w-2xl">
-                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                            <i class="fa-solid fa-search text-gray-400"></i>
-                        </div>
-                        <input type="text" id="searchInput" 
-                            class="block w-full pl-11 pr-4 py-4 rounded-xl text-gray-900 border-none shadow-lg focus:ring-2 focus:ring-blue-300 placeholder-gray-400 text-base"
-                            placeholder="请输入问题关键词，例如：怎么解绑设备？">
-                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-                            <button id="clearSearch" class="hidden text-gray-400 hover:text-gray-600 p-2">
-                                <i class="fa-solid fa-times-circle"></i>
-                            </button>
-                        </div>
-                    </div>
+            <div class="func-card">
+                <div class="func-icon">
+                    <!-- Map Pin -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 </div>
-            </section>
-
-            <!-- Search Results Status -->
-            <div id="searchStatus" class="hidden mb-6 text-sm text-gray-500 font-medium px-2">
-                找到 <span id="resultCount" class="text-blue-600 font-bold">0</span> 个相关操作指引
+                <span class="func-name">多重定位</span>
+                <div style="font-size:12px;color:#666;margin-top:4px;">GPS/BDS/LBS/WiFi</div>
             </div>
-
-            <!-- Content Area - All Cards -->
-            <div id="contentArea" class="space-y-10">
-
-                <!-- FAQ Section (Newly Added for Quick Access) -->
-                <section id="common-solutions" class="searchable-section">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="h-6 w-1 bg-yellow-500 rounded-full"></div>
-                        <h2 class="text-xl font-bold text-gray-800">高频问题 (FAQ)</h2>
-                    </div>
-                    
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <!-- Unbind Card -->
-                        <div class="content-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm searchable-item" data-keywords="解绑 微信绑定 换绑 移除设备">
-                            <div class="flex justify-between items-start mb-3">
-                                <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
-                                    <i class="fa-solid fa-link-slash text-red-500"></i> 如何解绑微信/设备？
-                                </h3>
-                                <span class="bg-red-50 text-red-600 text-xs px-2 py-1 rounded">高频</span>
-                            </div>
-                            <div class="text-sm text-gray-600 space-y-3">
-                                <p>如果用户需要更换绑定的微信号，或将设备从当前账号移除，请按以下步骤操作：</p>
-                                <ol class="list-decimal list-inside space-y-1 bg-gray-50 p-3 rounded border border-gray-100">
-                                    <li>进入 <strong>设备管理 > 设备信息管理</strong> 页面。</li>
-                                    <li>在搜索栏输入<strong>设备号(IMEI)</strong>并搜索。</li>
-                                    <li>在列表右侧找到“绑定微信”列。</li>
-                                    <li>点击红色的 <span class="text-red-500 font-bold">【解绑】</span> 按钮。</li>
-                                    <li>系统提示成功后，设备即可重新绑定。</li>
-                                </ol>
-                                <div class="screenshot-placeholder h-24">
-                                    <div class="text-center text-xs">
-                                        <div class="border-b border-gray-300 pb-1 mb-1 font-bold">设备列表示意</div>
-                                        设备号: 58056... | 绑定微信: 187****0900 <span class="text-red-500 border border-red-500 px-1 rounded ml-1 cursor-pointer">解绑</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Reset Password Card -->
-                        <div class="content-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm searchable-item" data-keywords="密码 重置 忘记密码 修改密码 账号">
-                            <div class="flex justify-between items-start mb-3">
-                                <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
-                                    <i class="fa-solid fa-key text-orange-500"></i> 如何重置用户密码？
-                                </h3>
-                                <span class="bg-orange-50 text-orange-600 text-xs px-2 py-1 rounded">常用</span>
-                            </div>
-                            <div class="text-sm text-gray-600 space-y-3">
-                                <p>当用户忘记登录密码时，可由上级管理员重置：</p>
-                                <ol class="list-decimal list-inside space-y-1 bg-gray-50 p-3 rounded border border-gray-100">
-                                    <li>进入 <strong>用户管理 > 用户列表</strong>。</li>
-                                    <li>找到对应的用户账号。</li>
-                                    <li>点击列表右侧的 <strong>“更多”</strong> 按钮。</li>
-                                    <li>选择 <span class="text-blue-600 font-bold">【重置密码】</span>。</li>
-                                    <li>新密码通常默认为 123456（具体视系统提示而定）。</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 1. User Management -->
-                <section id="user-mgmt" class="searchable-section scroll-mt-20">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="h-6 w-1 bg-blue-600 rounded-full"></div>
-                        <h2 class="text-xl font-bold text-gray-800">1. 用户与账号管理</h2>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="content-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm searchable-item" data-keywords="新增用户 开户 创建账号">
-                            <h3 class="text-lg font-bold text-gray-800 mb-2">新增下级用户</h3>
-                            <p class="text-sm text-gray-600 mb-3">用于为代理商或直接客户创建登录账号。</p>
-                            <div class="bg-gray-50 p-3 rounded text-sm text-gray-600">
-                                <strong>操作路径：</strong>用户管理 > 用户列表 > 点击左上角<span class="text-blue-600">【+新增】</span>按钮。<br>
-                                <strong>必填项：</strong>登录账号、手机号码、初始密码。
-                            </div>
-                        </div>
-
-                        <div class="content-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm searchable-item" data-keywords="停用 封号 账号状态 启用">
-                            <h3 class="text-lg font-bold text-gray-800 mb-2">停用/启用账号</h3>
-                            <p class="text-sm text-gray-600 mb-3">控制用户是否可以登录平台。</p>
-                            <div class="bg-gray-50 p-3 rounded text-sm text-gray-600">
-                                <strong>操作路径：</strong>用户管理 > 用户列表 > 状态栏开关。<br>
-                                <span class="text-green-600"><i class="fa-solid fa-toggle-on"></i> 蓝色</span>为正常，<span class="text-gray-400"><i class="fa-solid fa-toggle-off"></i> 灰色</span>为停用。
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 3. Device Management -->
-                <section id="device-mgmt" class="searchable-section scroll-mt-20">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="h-6 w-1 bg-blue-600 rounded-full"></div>
-                        <h2 class="text-xl font-bold text-gray-800">3. 设备管理</h2>
-                    </div>
-
-                    <div class="space-y-6">
-                        <!-- Search & Export -->
-                        <div class="content-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm searchable-item" data-keywords="搜索设备 查找设备 导出Excel 下载表格">
-                            <h3 class="text-lg font-bold text-gray-800 mb-3">设备搜索与导出</h3>
-                            <div class="text-sm text-gray-600">
-                                <p class="mb-2"><strong>搜索：</strong>支持输入 设备号(IMEI)、设备名称或手机号进行精确查找。</p>
-                                <p class="mb-2"><strong>导出数据：</strong></p>
-                                <ol class="list-decimal list-inside bg-gray-50 p-3 rounded mb-3">
-                                    <li>在设备列表勾选需要导出的设备（或不勾选导出全部）。</li>
-                                    <li>点击左上角橙色的 <span class="text-orange-500 font-bold">【导出】</span> 按钮。</li>
-                                    <li><span class="text-red-500 font-bold">注意：</span>导出是异步任务，点击后请前往 <strong>系统管理 > 下载任务</strong> 页面下载Excel文件。</li>
-                                </ol>
-                                <div class="screenshot-placeholder h-16">
-                                    <div class="flex gap-2 justify-center items-center w-full px-4">
-                                        <div class="bg-orange-400 text-white text-xs px-3 py-1 rounded">导出</div>
-                                        <div class="bg-blue-100 text-blue-500 text-xs px-3 py-1 rounded">重置设备密码</div>
-                                        <div class="bg-green-100 text-green-500 text-xs px-3 py-1 rounded">批量修改</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Remote Commands -->
-                        <div class="content-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm searchable-item" data-keywords="指令 远程重启 报警 定位 远程关机 文本下发">
-                            <h3 class="text-lg font-bold text-gray-800 mb-3">发送远程指令</h3>
-                            <p class="text-sm text-gray-600 mb-3">在设备列表右侧点击 <strong>【发送指令】</strong>，可执行以下操作：</p>
-                            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                                <div class="border rounded p-2 text-center text-xs text-gray-600"><strong class="block text-red-500">远程重启</strong>设备死机时使用</div>
-                                <div class="border rounded p-2 text-center text-xs text-gray-600"><strong class="block text-blue-500">立即定位</strong>刷新最新位置</div>
-                                <div class="border rounded p-2 text-center text-xs text-gray-600"><strong class="block text-purple-500">文本下发</strong>发送自定义参数</div>
-                                <div class="border rounded p-2 text-center text-xs text-gray-600"><strong class="block text-gray-500">远程开关机</strong>控制电源</div>
-                            </div>
-                        </div>
-
-                        <!-- Modify Device Info -->
-                        <div class="content-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm searchable-item" data-keywords="修改设备 设备名称 到期时间 备注 转移">
-                            <h3 class="text-lg font-bold text-gray-800 mb-3">修改设备信息</h3>
-                            <p class="text-sm text-gray-600">点击列表中的 <strong>【修改】</strong> 按钮，弹出编辑窗口。</p>
-                            <ul class="list-disc list-inside text-sm text-gray-600 mt-2 bg-gray-50 p-3 rounded">
-                                <li><strong>设备名称</strong>：自定义备注名。</li>
-                                <li><strong>到期时间</strong>：延长或缩短服务期。</li>
-                                <li><strong>所属用户</strong>：查看设备归属（如需变更归属，请使用列表顶部的“转移设备”功能）。</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 4. Monitoring -->
-                <section id="monitor-center" class="searchable-section scroll-mt-20">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="h-6 w-1 bg-blue-600 rounded-full"></div>
-                        <h2 class="text-xl font-bold text-gray-800">4. 监控中心</h2>
-                    </div>
-                    <div class="content-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm searchable-item" data-keywords="地图 监控 位置 状态 在线 离线">
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">查看设备实时位置</h3>
-                        <p class="text-sm text-gray-600 mb-3">进入监控中心，左侧列表选择设备，地图上会显示图标。</p>
-                        <div class="flex gap-4 text-sm">
-                            <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> <strong>在线</strong>：设备正常</div>
-                            <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-gray-400"></span> <strong>离线</strong>：设备断网或关机</div>
-                            <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-400"></span> <strong>休眠</strong>：省电模式</div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 5. Track Playback -->
-                <section id="track-playback" class="searchable-section scroll-mt-20">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="h-6 w-1 bg-blue-600 rounded-full"></div>
-                        <h2 class="text-xl font-bold text-gray-800">5. 轨迹回放</h2>
-                    </div>
-                    <div class="content-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm searchable-item" data-keywords="轨迹 历史行程 回放 路线">
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">查询历史轨迹</h3>
-                        <p class="text-sm text-gray-600">
-                            选择 <strong>设备</strong> 和 <strong>起止时间</strong>，点击查询。下方播放条可控制播放速度（如400米/秒）。
-                        </p>
-                    </div>
-                </section>
-
-            </div>
-
-            <!-- No Results State -->
-            <div id="noResults" class="hidden text-center py-12">
-                <div class="bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-400">
-                    <i class="fa-solid fa-search text-2xl"></i>
+            <div class="func-card">
+                <div class="func-icon">
+                    <!-- Settings / Sliders -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
                 </div>
-                <h3 class="text-lg font-medium text-gray-900">未找到相关内容</h3>
-                <p class="text-gray-500 text-sm mt-1">请尝试更换关键词，例如使用“密码”代替“密钥”。</p>
-                <button onclick="clearSearchInput()" class="mt-4 text-blue-600 font-medium text-sm hover:underline">清除搜索</button>
+                <span class="func-name">多种工作模式</span>
+                <div style="font-size:12px;color:#666;margin-top:4px;">智能/定时/省电</div>
             </div>
-
-        </main>
+            <div class="func-card">
+                <div class="func-icon">
+                    <!-- Bell / Alarm -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                </div>
+                <span class="func-name">多重报警</span>
+                <div style="font-size:12px;color:#666;margin-top:4px;">震动/光感/超速</div>
+            </div>
+            <div class="func-card">
+                <div class="func-icon">
+                    <!-- Cloud Upload -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h11a8 8 0 0 0 4.24-14.24"></path><line x1="12" y1="19" x2="12" y2="10"></line><polyline points="15 13 12 10 9 13"></polyline></svg>
+                </div>
+                <span class="func-name">盲区补传</span>
+            </div>
+            <div class="func-card">
+                <div class="func-icon">
+                    <!-- Download Cloud / FOTA -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 17 12 21 16 17"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.88 18.09A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.29"></path></svg>
+                </div>
+                <span class="func-name">FOTA远程升级</span>
+            </div>
+            <div class="func-card">
+                <div class="func-icon">
+                    <!-- Battery Low -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"></rect><line x1="23" y1="13" x2="23" y2="11"></line><line x1="6" y1="11" x2="6" y2="13"></line></svg>
+                </div>
+                <span class="func-name">低电量报警</span>
+            </div>
+            <div class="func-card">
+                <div class="func-icon">
+                    <!-- Smartphone / Remote -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                </div>
+                <span class="func-name">远程指令控制</span>
+            </div>
+        </div>
     </div>
 
-    <!-- Scroll to top -->
-    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center opacity-0 transition-opacity duration-300 hover:bg-blue-700 z-50">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
+    <!-- 硬件参数 -->
+    <div class="section">
+        <h2>硬件参数</h2>
 
-    <script>
-        // Search Functionality
-        const searchInput = document.getElementById('searchInput');
-        const clearBtn = document.getElementById('clearSearch');
-        const contentItems = document.querySelectorAll('.searchable-item');
-        const sections = document.querySelectorAll('.searchable-section');
-        const noResults = document.getElementById('noResults');
-        const searchStatus = document.getElementById('searchStatus');
-        const resultCount = document.getElementById('resultCount');
+        <div class="spec-block">
+            <div class="spec-group-title">核心方案</div>
+            <table>
+                <tr>
+                    <th>处理器</th>
+                    <td>ASR1603S</td>
+                </tr>
+                <tr>
+                    <th>SIM卡座</th>
+                    <td>NANO SIM 小卡</td>
+                </tr>
+                <tr>
+                    <th>传感器</th>
+                    <td>AD270 数字三轴加速度传感器 (G-sensor)</td>
+                </tr>
+            </table>
+        </div>
 
-        searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase().trim();
-            handleSearch(term);
-        });
+        <div class="spec-block">
+            <div class="spec-group-title">通信与射频</div>
+            <table>
+                <tr>
+                    <th>GSM频段</th>
+                    <td>EGSM900 / DCS1800MHz</td>
+                </tr>
+                <tr>
+                    <th>TDD-LTE频段</th>
+                    <td>B34 / B38 / B39 / B40 / B41</td>
+                </tr>
+                <tr>
+                    <th>FDD-LTE频段</th>
+                    <td>B1 / B3 / B5 / B8</td>
+                </tr>
+                <tr>
+                    <th>天线类型</th>
+                    <td>GSM: 内置FPC天线 / GPS: 内置双模陶瓷天线</td>
+                </tr>
+            </table>
+        </div>
 
-        clearBtn.addEventListener('click', clearSearchInput);
+        <div class="spec-block">
+            <div class="spec-group-title">定位性能</div>
+            <table>
+                <tr>
+                    <th>定位模式</th>
+                    <td>BDS、GPS、WiFi、LBS (多重定位)</td>
+                </tr>
+                <tr>
+                    <th>启动时间 (Open Sky)</th>
+                    <td>热启动 3s / 温启动 15s / 冷启动 38s</td>
+                </tr>
+                <tr>
+                    <th>GPS精度</th>
+                    <td>水平 < 10m，垂直 < 10m</td>
+                </tr>
+                <tr>
+                    <th>WiFi定位精度</th>
+                    <td>10 ~ 200米 (WiFi热点) / 100 ~ 2000米 (WiFi基站)</td>
+                </tr>
+                <tr>
+                    <th>灵敏度</th>
+                    <td>-163dBm</td>
+                </tr>
+            </table>
+        </div>
 
-        function clearSearchInput() {
-            searchInput.value = '';
-            handleSearch('');
-        }
+        <div class="spec-block">
+            <div class="spec-group-title">电气与物理特性</div>
+            <table>
+                <tr>
+                    <th>内置电池</th>
+                    <td><strong style="color:#0066cc">6000mAh</strong> / 3.7V 锂聚合物电池</td>
+                </tr>
+                <tr>
+                    <th>整机尺寸</th>
+                    <td>100 * 62 * 19.7 mm</td>
+                </tr>
+                <tr>
+                    <th>整机重量</th>
+                    <td>200g</td>
+                </tr>
+                <tr>
+                    <th>工作环境</th>
+                    <td>温度: -20℃～70℃ / 湿度: 20%～80%RH</td>
+                </tr>
+                <tr>
+                    <th>电流功耗</th>
+                    <td>待机 ≤ 3.5mA / 工作 ≤ 50mA</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
-        function handleSearch(term) {
-            // Toggle Clear Button
-            if (term.length > 0) {
-                clearBtn.classList.remove('hidden');
-                searchStatus.classList.remove('hidden');
-            } else {
-                clearBtn.classList.add('hidden');
-                searchStatus.classList.add('hidden');
-            }
+    <!-- 配置清单 -->
+    <div class="section">
+        <h2>配置清单</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:10%">序号</th>
+                    <th style="width:20%">名称</th>
+                    <th>规格描述</th>
+                    <th style="width:10%">单位</th>
+                    <th style="width:10%">数量</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>主机</td>
+                    <td>4G Cat.1无线通讯、BDS/GPS/WiFi/LBS定位、内置电池、光感/震动传感器</td>
+                    <td>台</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>电源线</td>
+                    <td>Type-C 充电线</td>
+                    <td>条</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>其他</td>
+                    <td>包装盒、说明书、合格证</td>
+                    <td>套</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-            let matchCount = 0;
-            let foundInSec = {}; // Track if section has visible items
+    <footer>
+        <p>深圳市芯跃智联科技有限公司 | 版本号：V1.0</p>
+    </footer>
+</div>
 
-            contentItems.forEach(item => {
-                // Get text content and data-keywords
-                const text = item.innerText.toLowerCase();
-                const keywords = item.getAttribute('data-keywords') ? item.getAttribute('data-keywords').toLowerCase() : '';
-                
-                // Remove previous highlighting
-                removeHighlight(item);
-
-                if (term === '' || text.includes(term) || keywords.includes(term)) {
-                    item.classList.remove('hidden');
-                    if (term !== '') {
-                        matchCount++;
-                        highlightText(item, term);
-                        // Mark parent section as having visible content
-                        const parentSec = item.closest('.searchable-section');
-                        if (parentSec) foundInSec[parentSec.id] = true;
-                    }
-                } else {
-                    item.classList.add('hidden');
-                }
-            });
-
-            // Handle Sections Visibility
-            sections.forEach(sec => {
-                if (term === '') {
-                    sec.classList.remove('hidden'); // Show all sections if no search
-                } else {
-                    if (foundInSec[sec.id]) {
-                        sec.classList.remove('hidden');
-                    } else {
-                        sec.classList.add('hidden');
-                    }
-                }
-            });
-
-            // Handle No Results
-            if (matchCount === 0 && term !== '') {
-                noResults.classList.remove('hidden');
-            } else {
-                noResults.classList.add('hidden');
-            }
-
-            resultCount.textContent = matchCount;
-        }
-
-        // Helper: Highlight text
-        function highlightText(element, term) {
-            if (!term) return;
-            
-            // This is a simple implementation. For complex HTML it might need more robust traversing.
-            // We'll target p, li, h3, div inside the card
-            const targets = element.querySelectorAll('p, li, h3, div:not(.screenshot-placeholder)');
-            
-            targets.forEach(node => {
-                // Only process text nodes to avoid breaking HTML
-                if(node.children.length === 0 && node.innerText.toLowerCase().includes(term)) {
-                     const regex = new RegExp(`(${term})`, 'gi');
-                     node.innerHTML = node.innerText.replace(regex, '<span class="highlight">$1</span>');
-                }
-            });
-        }
-
-        function removeHighlight(element) {
-            const highlights = element.querySelectorAll('.highlight');
-            highlights.forEach(span => {
-                const parent = span.parentNode;
-                parent.replaceChild(document.createTextNode(span.innerText), span);
-                parent.normalize(); // Merge text nodes
-            });
-        }
-
-        // Mobile Menu Logic (Existing)
-        const menuBtn = document.getElementById('menuBtn');
-        const sidebar = document.getElementById('sidebar');
-        
-        menuBtn.addEventListener('click', () => {
-            if(sidebar.classList.contains('-translate-x-full')) {
-                sidebar.classList.remove('-translate-x-full');
-            } else {
-                sidebar.classList.add('-translate-x-full');
-            }
-        });
-
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth < 1024) {
-                if (!sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
-                    sidebar.classList.add('-translate-x-full');
-                }
-            }
-        });
-
-        // Scroll Logic (Existing)
-        const scrollBtn = document.getElementById('scrollToTop');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollBtn.classList.remove('opacity-0');
-            } else {
-                scrollBtn.classList.add('opacity-0');
-            }
-        });
-        scrollBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    </script>
 </body>
 </html>
