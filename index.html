@@ -3,633 +3,568 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XY101 无线长待机定位终端 - 产品规格书</title>
+    <title>XY101 可充电定位终端 - 产品规格书</title>
     <style>
         :root {
-            --primary-color: #0066cc;
-            --secondary-color: #f0f7ff;
-            --text-main: #333333;
-            --text-secondary: #666666;
-            --border-color: #e0e0e0;
-            --bg-color: #f5f5f7;
-            --card-bg: #ffffff;
+            --primary-color: #0056b3; /* 稳重的科技蓝 */
+            --accent-color: #e6f0fa;
+            --text-dark: #1a1a1a;
+            --text-gray: #555555;
+            --border-line: #dee2e6;
+            --bg-page: #f4f6f9;
         }
 
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
-            line-height: 1.5;
-            color: var(--text-main);
-            background-color: var(--bg-color);
+            font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-page);
             margin: 0;
-            padding: 20px;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
+            padding: 40px 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .container {
-            max-width: 900px;
+        .page-container {
+            width: 210mm; /* A4 宽度 */
+            min-height: 297mm;
             margin: 0 auto;
-            background-color: var(--card-bg);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border-radius: 12px;
-            overflow: hidden;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Header Layout (Screen View) */
-        header {
-            background: linear-gradient(135deg, #0066cc, #004c99);
+        /* --- Header Section --- */
+        .header {
+            background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
             color: white;
             padding: 30px 40px;
-            position: relative;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            /* Ensure background prints */
+            align-items: center;
+            border-bottom: 4px solid #003366;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
         }
 
-        .header-content {
+        .header-left h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .header-left .subtitle {
+            margin-top: 8px;
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .brand-tag {
+            background: rgba(255,255,255,0.15);
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* --- Content Layout --- */
+        .content {
+            padding: 40px;
             flex: 1;
         }
 
-        .logo-container {
-            background-color: white;
-            padding: 8px 20px;
-            border-radius: 8px;
-            margin-right: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 80px;
-        }
-
-        /* Content Sections */
-        .section {
-            padding: 25px 40px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .section:last-child {
-            border-bottom: none;
-        }
-
-        h2 {
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
             color: var(--primary-color);
             border-left: 5px solid var(--primary-color);
             padding-left: 12px;
-            margin-top: 0;
             margin-bottom: 20px;
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        /* Highlight Grid */
-        .intro-grid {
-            display: grid;
-            grid-template-columns: 3fr 2fr;
-            gap: 30px;
-            align-items: start;
-        }
-
-        .highlight-box {
-            background-color: var(--secondary-color);
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #dbeafe;
-            margin-top: 15px;
-        }
-
-        .highlight-item {
-            margin-bottom: 8px;
+            margin-top: 30px;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        /* --- Intro & Visuals --- */
+        .intro-container {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .intro-text {
+            flex: 1.2;
+        }
+
+        .intro-desc {
             font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            text-align: justify;
         }
 
-        .highlight-item::before {
-            content: "✔";
-            color: var(--primary-color);
-            margin-right: 8px;
-            font-weight: bold;
-            line-height: 1.5;
+        .features-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
         }
 
-        /* Images */
-        .product-images {
+        .feature-item {
+            background: var(--accent-color);
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 13px;
             display: flex;
-            gap: 15px;
-            justify-content: center;
+            align-items: center;
+            border-left: 3px solid var(--primary-color);
         }
 
-        .img-placeholder {
-            width: 140px;
-            height: 200px;
-            background-color: #f8f9fa;
-            border: 2px dashed #ddd;
+        .feature-icon {
+            margin-right: 10px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Schematic Diagram Area */
+        .visual-area {
+            flex: 0.8;
+            background: #f8f9fa;
+            border: 1px dashed #ccc;
             border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 180px;
+        }
+        
+        /* CSS Drawing of the Device Dimensions */
+        .device-schematic {
+            position: relative;
+            width: 100px; /* Scaled width */
+            height: 160px; /* Scaled height */
+            background: #333;
+            border-radius: 8px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+        }
+        .device-schematic::before { /* Red strip */
+            content: '';
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 60px;
+            background: #e74c3c;
+            border-radius: 8px;
+        }
+        .device-schematic::after { /* Circles */
+            content: '';
+            position: absolute;
+            top: 15px; right: 15px;
+            width: 8px; height: 8px;
+            background: #555;
+            border-radius: 50%;
+            box-shadow: 0 30px 0 #555, 0 60px 0 #555, 0 90px 0 #555,
+                        -60px 0 0 #555, -60px 30px 0 #555, -60px 60px 0 #555, -60px 90px 0 #555;
+        }
+        
+        .dim-line {
+            position: absolute;
+            background: #999;
+        }
+        .dim-text {
+            position: absolute;
+            font-size: 11px;
+            color: #666;
+            font-family: Consolas, monospace;
+        }
+
+        /* --- Icon Grid --- */
+        .grid-functions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .func-box {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            background: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #999;
-            font-size: 12px;
         }
 
-        /* Tables */
-        table {
+        .func-icon-svg {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .func-title {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-dark);
+        }
+
+        .func-sub {
+            font-size: 11px;
+            color: #888;
+        }
+
+        /* --- Tables --- */
+        .spec-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 13px;
-            margin-bottom: 5px;
+            margin-bottom: 25px;
+            border: 1px solid #e0e0e0;
         }
 
-        th, td {
-            padding: 8px 12px;
-            text-align: left;
+        .spec-table th, .spec-table td {
+            padding: 10px 15px;
             border-bottom: 1px solid #eee;
+            text-align: left;
         }
 
-        th {
-            background-color: #f1f5f9;
-            color: #444;
-            font-weight: 600;
+        .spec-table th {
+            background-color: #f8f9fa;
             width: 30%;
+            color: var(--text-dark);
+            font-weight: 600;
         }
         
-        tr:nth-child(even) td {
-            background-color: #fafbfc;
-        }
-
-        .spec-block {
-            margin-bottom: 20px;
-            break-inside: avoid;
-            page-break-inside: avoid;
-        }
-
-        .spec-group-title {
+        /* Config Table specific */
+        .config-table th {
+            text-align: center;
             background-color: #e6f0fa;
+        }
+        .config-table td {
+            text-align: center;
+        }
+        .config-table td:nth-child(2), .config-table td:nth-child(3) {
+            text-align: left;
+        }
+
+        .spec-table tr:last-child th, 
+        .spec-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Highlight specific values */
+        .highlight-val {
             color: var(--primary-color);
             font-weight: bold;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 14px;
-            margin-bottom: 8px;
-            display: inline-block;
         }
 
-        .function-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 15px;
-        }
-
-        .func-card {
-            background: white;
-            border: 1px solid var(--border-color);
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            break-inside: avoid;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* --- New Icon Styles --- */
-        .func-icon {
-            /* 屏幕显示尺寸 */
-            width: 36px;
-            height: 36px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color); /* Use theme color */
-        }
-        
-        .func-icon svg {
-            width: 100%;
-            height: 100%;
-            stroke-width: 1.5; /* Slightly elegant stroke */
-        }
-
-        .func-name {
-            font-weight: 600;
-            color: var(--text-main);
-            font-size: 14px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px;
+        /* --- Footer --- */
+        .footer {
+            margin-top: auto;
+            border-top: 1px solid #eee;
+            padding: 20px 40px;
             font-size: 12px;
-            color: #999;
-            background-color: #f8f9fa;
-            border-top: 1px solid var(--border-color);
+            color: #888;
+            display: flex;
+            justify-content: space-between;
+            background: #fcfcfc;
         }
 
-        /* --- PRINT SPECIFIC STYLES (A4 Optimization) --- */
+        /* --- Print Optimization --- */
         @media print {
-            @page {
-                size: A4;
-                margin: 0;
-            }
-
             body {
-                background-color: white;
-                margin: 0;
-                padding: 0;
-                width: 210mm; /* A4 Width */
-                min-height: 297mm;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .container {
-                box-shadow: none;
-                border: none;
-                width: 100%;
-                max-width: none;
-                border-radius: 0;
-                margin: 0;
-            }
-
-            /* --- Header: Top Banner Style --- */
-            header {
-                height: auto; 
-                width: 100%;
-                /* 紧凑内边距 */
-                padding: 20px 40px; 
-                box-sizing: border-box;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                text-align: left;
-                page-break-after: avoid; 
-                
-                /* 强制蓝色背景 */
-                background-color: #0066cc !important; 
-                background-image: linear-gradient(135deg, #0066cc, #004c99) !important;
-                color: white !important;
-                
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-                margin-bottom: 0;
-            }
-
-            header .header-content {
-                display: block; 
-            }
-
-            .logo-container {
-                margin: 0; 
-                margin-left: 20px;
-                padding: 8px 20px;
-                box-shadow: none;
-                border: 1px solid rgba(255,255,255,0.2);
-            }
-            
-            header h1 {
-                font-size: 24px;
-                margin-bottom: 5px;
-                color: white !important;
-            }
-            
-            header .subtitle {
-                font-size: 14px;
-                opacity: 0.9;
-                color: white !important;
-            }
-            
-            header .company-name {
-                font-size: 12px;
-                margin-bottom: 5px;
-                opacity: 0.9;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                color: white !important;
-            }
-
-            /* --- Content Pages --- */
-            .section {
-                /* 紧凑的打印边距 */
-                padding: 8mm 20mm; 
-                page-break-inside: avoid;
-                width: 100%;
-                box-sizing: border-box;
-            }
-            
-            /* 紧凑的高亮框 */
-            .intro-grid {
-                gap: 15px; 
-            }
-            
-            .highlight-box {
-                margin-top: 10px;
-                padding: 10px;
-            }
-
-            /* 打印时缩小图片占位符，节省垂直空间 */
-            .img-placeholder {
-                height: 120px !important; 
-                width: 100px;
-            }
-
-            /* 防止元素断页 */
-            .spec-block, table, .func-card, .highlight-box {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
-
-            h2 {
-                page-break-after: avoid;
-                margin-top: 0;
-                margin-bottom: 12px;
-                font-size: 18px;
-            }
-
-            thead {
-                display: table-header-group; 
-            }
-            
-            footer {
-                position: fixed;
-                bottom: 0;
-                width: 100%;
                 background: white;
-                border-top: 1px solid #eee;
-                padding: 10px;
+                padding: 0;
             }
-            
-            .func-card {
+            .page-container {
+                width: 100%;
                 box-shadow: none;
-                border: 1px solid #ccc;
-                padding: 10px; 
+                margin: 0;
+                border: none;
             }
-            
-            .func-icon {
-                /* 打印尺寸 - 比以前大 */
-                width: 32px;
-                height: 32px;
-                margin-bottom: 8px;
-                /* 强制打印颜色 */
+            .header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                padding: 20px 40px;
+            }
+            .feature-item, .spec-table th, .config-table th {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
-            
-            .func-icon svg {
-                stroke-width: 2; /* 打印时线条稍粗一点，防止断线 */
+            .visual-area {
+                border: 1px solid #ddd; 
+            }
+            /* Prevent page breaks inside tables */
+            table, tr, td, th, .func-box {
+                page-break-inside: avoid;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <div class="header-content">
-            <span class="company-name">深圳市芯跃智联科技有限公司</span>
-            <h1>XY101 无线长待机定位终端</h1>
-            <div class="subtitle">4G Cat.1 / 6000mAh / 免安装强磁吸附</div>
-        </div>
-        <div class="logo-container">
-            <span style="color: #0066cc; font-weight: bold; font-size: 18px; letter-spacing: 1px;">芯跃智联</span>
-        </div>
-    </header>
+    <div class="page-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1>XY101 可充电定位终端</h1>
+                <div class="subtitle">4G Cat.1 | 5000mAh | 强磁免安装</div>
+            </div>
+            <div class="header-right">
+                <div class="brand-tag">芯跃智联 COREFLY</div>
+                <div style="font-size: 12px; margin-top: 5px; opacity: 0.8;">日期: 2024-11-23</div>
+            </div>
+        </header>
 
-    <!-- 产品简介 -->
-    <div class="section">
-        <h2>产品简介</h2>
-        <div class="intro-grid">
-            <div>
-                <p style="margin-top:0;">XY101是一款高性能4G Cat.1无线可充电型定位终端。该机型兼顾轻巧体积与超长续航，专为资产追踪与车辆管理设计。其具备免安装、强力吸附、即放即用的特点。</p>
-                <div class="highlight-box">
-                    <div class="highlight-item"><strong>超长续航：</strong>充满电可待机长达 60 天</div>
-                    <div class="highlight-item"><strong>精准定位：</strong>北斗 + GPS + WiFi + LBS 多重定位系统</div>
-                    <div class="highlight-item"><strong>便捷安装：</strong>自带强力磁铁，无需布线，随吸随用</div>
+        <div class="content">
+            
+            <!-- 1. 产品概述与图示 -->
+            <div class="section-title">一、 产品概述</div>
+            <div class="intro-container">
+                <div class="intro-text">
+                    <div class="intro-desc">
+                        XY101是一款高性能4G Cat.1无线可充电型定位终端。该机型兼顾轻巧体积与超长续航，内置 <strong>5000mAh</strong> 聚合物锂电池，在智能省电模式下可待机长达 <strong>60天</strong>。设备具备免安装、强力吸附、即放即用的特点，适用于车辆租赁、车队管理及贵重资产追踪。
+                    </div>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span><strong>强劲续航：</strong>5000mAh 电池，待机可达 2 个月</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span><strong>精准定位：</strong>BDS + GPS + WiFi + LBS 多重混合定位</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span><strong>便捷安装：</strong>工业级强磁吸附，防脱落设计</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="product-images">
-                <div class="img-placeholder">
-                    <span>产品正面图</span>
-                </div>
-                <div class="img-placeholder">
-                    <span>产品背面图</span>
-                </div>
-            </div>
-        </div>
-    </div>
+                
+                <!-- 尺寸示意图 -->
+                <div class="visual-area">
+                    <div class="device-schematic"></div>
+                    <!-- Dimensions annotations -->
+                    <div class="dim-line" style="top: -10px; left: 0; width: 100%; height: 1px;"></div>
+                    <div class="dim-line" style="top: -13px; left: 0; width: 1px; height: 7px;"></div>
+                    <div class="dim-line" style="top: -13px; right: 0; width: 1px; height: 7px;"></div>
+                    <div class="dim-text" style="top: -25px; left: 50%; transform: translateX(-50%);">62mm</div>
+                    
+                    <div class="dim-line" style="left: -10px; top: 0; height: 100%; width: 1px;"></div>
+                    <div class="dim-line" style="left: -13px; top: 0; height: 1px; width: 7px;"></div>
+                    <div class="dim-line" style="left: -13px; bottom: 0; height: 1px; width: 7px;"></div>
+                    <div class="dim-text" style="left: -45px; top: 50%; transform: translateY(-50%);">100mm</div>
 
-    <!-- 主要功能 (Updated with SVG Icons) -->
-    <div class="section">
-        <h2>主要功能</h2>
-        <div class="function-grid">
-            <div class="func-card">
-                <div class="func-icon">
-                    <!-- Protocol / File -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    <div class="dim-text" style="bottom: -25px; left: 50%; transform: translateX(-50%); color: #888;">厚度: 19.7mm</div>
                 </div>
-                <span class="func-name">部标808协议</span>
             </div>
-            <div class="func-card">
-                <div class="func-icon">
-                    <!-- Map Pin -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                </div>
-                <span class="func-name">多重定位</span>
-                <div style="font-size:12px;color:#666;margin-top:4px;">GPS/BDS/LBS/WiFi</div>
-            </div>
-            <div class="func-card">
-                <div class="func-icon">
-                    <!-- Settings / Sliders -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
-                </div>
-                <span class="func-name">多种工作模式</span>
-                <div style="font-size:12px;color:#666;margin-top:4px;">智能/定时/省电</div>
-            </div>
-            <div class="func-card">
-                <div class="func-icon">
-                    <!-- Bell / Alarm -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-                </div>
-                <span class="func-name">多重报警</span>
-                <div style="font-size:12px;color:#666;margin-top:4px;">震动/光感/超速</div>
-            </div>
-            <div class="func-card">
-                <div class="func-icon">
-                    <!-- Cloud Upload -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h11a8 8 0 0 0 4.24-14.24"></path><line x1="12" y1="19" x2="12" y2="10"></line><polyline points="15 13 12 10 9 13"></polyline></svg>
-                </div>
-                <span class="func-name">盲区补传</span>
-            </div>
-            <div class="func-card">
-                <div class="func-icon">
-                    <!-- Download Cloud / FOTA -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 17 12 21 16 17"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.88 18.09A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.29"></path></svg>
-                </div>
-                <span class="func-name">FOTA远程升级</span>
-            </div>
-            <div class="func-card">
-                <div class="func-icon">
-                    <!-- Battery Low -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"></rect><line x1="23" y1="13" x2="23" y2="11"></line><line x1="6" y1="11" x2="6" y2="13"></line></svg>
-                </div>
-                <span class="func-name">低电量报警</span>
-            </div>
-            <div class="func-card">
-                <div class="func-icon">
-                    <!-- Smartphone / Remote -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-                </div>
-                <span class="func-name">远程指令控制</span>
-            </div>
-        </div>
-    </div>
 
-    <!-- 硬件参数 -->
-    <div class="section">
-        <h2>硬件参数</h2>
+            <!-- 2. 主要功能 Grid (Updated to 8 items) -->
+            <div class="section-title">二、 主要功能</div>
+            <div class="grid-functions">
+                <div class="func-box">
+                    <svg class="func-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M12 8h4"/><path d="M12 12h4"/><path d="M12 16h4"/></svg>
+                    <div class="func-title">部标808协议</div>
+                    <div class="func-sub">标准交通协议</div>
+                </div>
+                <div class="func-box">
+                    <svg class="func-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                    <div class="func-title">多重定位</div>
+                    <div class="func-sub">BDS/GPS/WiFi/LBS</div>
+                </div>
+                <div class="func-box">
+                    <svg class="func-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93 4.93 19.07"/></svg>
+                    <div class="func-title">多种模式</div>
+                    <div class="func-sub">智能/定时/省电</div>
+                </div>
+                <div class="func-box">
+                    <svg class="func-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    <div class="func-title">多重报警</div>
+                    <div class="func-sub">震动/光感/超速</div>
+                </div>
+                <div class="func-box">
+                    <svg class="func-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    <div class="func-title">盲区补传</div>
+                    <div class="func-sub">无网自动缓存</div>
+                </div>
+                <div class="func-box">
+                    <svg class="func-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <div class="func-title">FOTA升级</div>
+                    <div class="func-sub">远程固件更新</div>
+                </div>
+                <div class="func-box">
+                    <svg class="func-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg>
+                    <div class="func-title">低电量报警</div>
+                    <div class="func-sub">电量过低提醒</div>
+                </div>
+                <div class="func-box">
+                    <svg class="func-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+                    <div class="func-title">远程指令</div>
+                    <div class="func-sub">SMS/APP控制</div>
+                </div>
+            </div>
 
-        <div class="spec-block">
-            <div class="spec-group-title">核心方案</div>
-            <table>
+            <!-- 3. 技术参数 Tables -->
+            <div class="section-title">三、 技术参数</div>
+            
+            <table class="spec-table">
                 <tr>
-                    <th>处理器</th>
-                    <td>ASR1603S</td>
+                    <th colspan="2" style="background: #e9ecef; color: #333; text-align: center;">通讯与定位参数</th>
                 </tr>
                 <tr>
-                    <th>SIM卡座</th>
-                    <td>NANO SIM 小卡</td>
+                    <th>通信制式</th>
+                    <td>4G Cat.1 (ASR1603S 芯片方案)</td>
                 </tr>
                 <tr>
-                    <th>传感器</th>
-                    <td>AD270 数字三轴加速度传感器 (G-sensor)</td>
+                    <th>工作频段</th>
+                    <td>
+                        FDD-LTE: B1 / B3 / B5 / B8<br>
+                        TDD-LTE: B34 / B38 / B39 / B40 / B41
+                    </td>
                 </tr>
-            </table>
-        </div>
-
-        <div class="spec-block">
-            <div class="spec-group-title">通信与射频</div>
-            <table>
-                <tr>
-                    <th>GSM频段</th>
-                    <td>EGSM900 / DCS1800MHz</td>
-                </tr>
-                <tr>
-                    <th>TDD-LTE频段</th>
-                    <td>B34 / B38 / B39 / B40 / B41</td>
-                </tr>
-                <tr>
-                    <th>FDD-LTE频段</th>
-                    <td>B1 / B3 / B5 / B8</td>
-                </tr>
-                <tr>
-                    <th>天线类型</th>
-                    <td>GSM: 内置FPC天线 / GPS: 内置双模陶瓷天线</td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="spec-block">
-            <div class="spec-group-title">定位性能</div>
-            <table>
                 <tr>
                     <th>定位模式</th>
-                    <td>BDS、GPS、WiFi、LBS (多重定位)</td>
+                    <td>北斗 (BDS) + GPS + WiFi + LBS 基站定位</td>
                 </tr>
                 <tr>
-                    <th>启动时间 (Open Sky)</th>
-                    <td>热启动 3s / 温启动 15s / 冷启动 38s</td>
+                    <th>定位精度</th>
+                    <td>户外 < 10米 (GNSS)；室内 10~200米 (WiFi/LBS)</td>
                 </tr>
                 <tr>
-                    <th>GPS精度</th>
-                    <td>水平 < 10m，垂直 < 10m</td>
-                </tr>
-                <tr>
-                    <th>WiFi定位精度</th>
-                    <td>10 ~ 200米 (WiFi热点) / 100 ~ 2000米 (WiFi基站)</td>
-                </tr>
-                <tr>
-                    <th>灵敏度</th>
-                    <td>-163dBm</td>
+                    <th>天线规格</th>
+                    <td>内置 FPC 天线 (GSM/4G) + 181802 陶瓷天线 (GPS)</td>
                 </tr>
             </table>
-        </div>
 
-        <div class="spec-block">
-            <div class="spec-group-title">电气与物理特性</div>
-            <table>
+            <table class="spec-table">
                 <tr>
-                    <th>内置电池</th>
-                    <td><strong style="color:#0066cc">6000mAh</strong> / 3.7V 锂聚合物电池</td>
+                    <th colspan="2" style="background: #e9ecef; color: #333; text-align: center;">整机电气参数</th>
+                </tr>
+                <tr>
+                    <th>电池容量</th>
+                    <td class="highlight-val">5000 mAh / 3.7V 聚合物锂电池</td>
+                </tr>
+                <tr>
+                    <th>待机时间</th>
+                    <td>约 60 天 (按每天上传1条数据计算)</td>
+                </tr>
+                <tr>
+                    <th>充电接口</th>
+                    <td>Type-C (输入: 5V/1A~2A)</td>
                 </tr>
                 <tr>
                     <th>整机尺寸</th>
                     <td>100 * 62 * 19.7 mm</td>
                 </tr>
                 <tr>
-                    <th>整机重量</th>
-                    <td>200g</td>
-                </tr>
-                <tr>
-                    <th>工作环境</th>
-                    <td>温度: -20℃～70℃ / 湿度: 20%～80%RH</td>
-                </tr>
-                <tr>
-                    <th>电流功耗</th>
-                    <td>待机 ≤ 3.5mA / 工作 ≤ 50mA</td>
+                    <th>防水等级</th>
+                    <td>IP65 (生活防水，防尘)</td>
                 </tr>
             </table>
+
+            <!-- 4. 可靠性测试 -->
+            <div class="section-title">四、 可靠性测试标准</div>
+            <table class="spec-table" style="font-size: 12px;">
+                <thead>
+                    <tr>
+                        <th style="width: 25%">测试项目</th>
+                        <th>测试条件与标准</th>
+                        <th style="width: 15%">判定</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>高温工作</strong></td>
+                        <td>温度 80℃，90V电压通电，工作6小时</td>
+                        <td>正常</td>
+                    </tr>
+                    <tr>
+                        <td><strong>低温工作</strong></td>
+                        <td>温度 -30℃，90V电压通电，待机8小时</td>
+                        <td>正常</td>
+                    </tr>
+                    <tr>
+                        <td><strong>自由跌落</strong></td>
+                        <td>由 1米 高度自由跌落至水泥地面 (6个面)</td>
+                        <td>无裂痕/功能OK</td>
+                    </tr>
+                    <tr>
+                        <td><strong>振动试验</strong></td>
+                        <td>符合 GB/T 2423.10 标准 (频率/振幅/扫频)，3个方向各30min</td>
+                        <td>结构无松动</td>
+                    </tr>
+                    <tr>
+                        <td><strong>外壳防护</strong></td>
+                        <td>明火点燃 5秒</td>
+                        <td>阻燃/无明火</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 5. 配置清单 -->
+            <div class="section-title">五、 配置清单</div>
+            <table class="spec-table config-table">
+                <thead>
+                    <tr>
+                        <th style="width: 10%">序号</th>
+                        <th style="width: 25%">名称</th>
+                        <th>规格描述</th>
+                        <th style="width: 10%">单位</th>
+                        <th style="width: 10%">数量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>主机</td>
+                        <td>XY101 定位终端 (内置5000mAh电池)</td>
+                        <td>台</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>电源线</td>
+                        <td>Type-C 充电数据线</td>
+                        <td>条</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>其他</td>
+                        <td>包装盒、快速指南、合格证</td>
+                        <td>套</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
-    </div>
 
-    <!-- 配置清单 -->
-    <div class="section">
-        <h2>配置清单</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width:10%">序号</th>
-                    <th style="width:20%">名称</th>
-                    <th>规格描述</th>
-                    <th style="width:10%">单位</th>
-                    <th style="width:10%">数量</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>主机</td>
-                    <td>4G Cat.1无线通讯、BDS/GPS/WiFi/LBS定位、内置电池、光感/震动传感器</td>
-                    <td>台</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>电源线</td>
-                    <td>Type-C 充电线</td>
-                    <td>条</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>其他</td>
-                    <td>包装盒、说明书、合格证</td>
-                    <td>套</td>
-                    <td>1</td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- Footer -->
+        <footer class="footer">
+            <div>深圳市芯跃智联科技有限公司</div>
+            <div>地址：深圳市龙华区观湖街道大和路597号鑫潮工业园A栋3楼</div>
+            <div>官网：www.corefly.cn</div>
+        </footer>
     </div>
-
-    <footer>
-        <p>深圳市芯跃智联科技有限公司 | 版本号：V1.0</p>
-    </footer>
-</div>
 
 </body>
 </html>
